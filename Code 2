@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+
+#define PI 3.141592653589793
+
+int main(void) {
+    double lambdaGreen, lambdaRed;  
+    double thetaGreenDeg, thetaRedDeg;
+    double thetaGreenRad, thetaRedRad;
+    double d;                       
+    int m;
+
+    printf("==Problem #2: Diffraction Grating Angles ==\n");
+
+    
+    printf("Enter the green wavelength (in nm): ");
+    scanf("%lf", &lambdaGreen);
+
+    printf("Enter the observed angle for green light (in degrees): ");
+    scanf("%lf", &thetaGreenDeg);
+
+    
+    printf("Enter the diffraction order for green light: ");
+    scanf("%d", &m);
+
+   
+    printf("Enter the red wavelength (in nm): ");
+    scanf("%lf", &lambdaRed);
+
+   
+    thetaGreenRad = thetaGreenDeg * PI / 180.0;
+
+   
+    
+    d = (m * lambdaGreen) / sin(thetaGreenRad);
+
+  
+    thetaRedRad = asin((m * lambdaRed) / d);
+
+   
+    thetaRedDeg =thetaRedRad * 180.0 / PI;
+
+    
+    printf("\n Results  \n");
+    printf("Green light: wavelength = %.2f nm, angle = %.2f deg, order = %d\n",
+           lambdaGreen, thetaGreenDeg, m);
+    printf("Red light:   wavelength = %.2f nm\n", lambdaRed);
+    printf("=> The red light appears at angle = %.2f degrees (order %d)\n",
+           thetaRedDeg, m);
+
+    return 0;
+}
